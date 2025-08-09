@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const URI = process.env.MONGODB_URI;
 
 const connectToMongoDB = async () => {
@@ -33,6 +33,11 @@ const connectToMongoDB = async () => {
 };
 
 connectToMongoDB(); 
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
 
 app.use("/api/user",userRoute);
 app.use("/api/message",messageRoute);
