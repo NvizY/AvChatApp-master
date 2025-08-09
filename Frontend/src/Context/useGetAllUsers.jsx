@@ -12,11 +12,14 @@ export default function useGetAllUsers() {
         setLoading(true);
          try {
             const token=Cookies.get("jwt");
-            const response=await api.get("/api/user/allUsers")
+            console.log("JWT Token exists:", !!token);
+            const response=await api.get("/api/user/allUsers");
+            console.log("Users fetched successfully:", response.data);
             setAllUsers(response.data);
             setLoading(false);
           }catch (error) {
-        console.log("Error in useGetAllUsers : "+error)
+        console.log("Error in useGetAllUsers:", error.response?.data || error.message);
+        setLoading(false);
     }
     }
     getUsers()
