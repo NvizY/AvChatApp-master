@@ -11,6 +11,15 @@ import {app,server} from "./SocketIO/server.js";
 
 dotenv.config();
 
+console.log("=== SERVER STARTUP ===");
+console.log("Environment variables check:");
+console.log("- PORT:", process.env.PORT || "not set");
+console.log("- NODE_ENV:", process.env.NODE_ENV || "not set");
+console.log("- MONGODB_URI exists:", !!process.env.MONGODB_URI);
+console.log("- JWT_SECRET exists:", !!process.env.JWT_SECRET);
+console.log("- JWT_SECRET length:", process.env.JWT_SECRET ? process.env.JWT_SECRET.length : 0);
+console.log("- FRONTEND_ORIGIN:", process.env.FRONTEND_ORIGIN || "not set");
+
 app.use(express.json()) //Middleware parses the data
 app.use(cookieParser());
 app.use(cors({
