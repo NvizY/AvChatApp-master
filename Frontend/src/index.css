@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+@layer utilities {
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+}
